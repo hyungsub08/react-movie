@@ -1,10 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { Link } from 'react-router-dom';
 
 // state가 필요없기 때문에 function component로 만들어도 됨
 
 function Movie({id, year, title, summary, poster, genres}) {
-    return <div className="movie">
+    return <Link to="/detail"><div className="movie">
         <img src={poster} alt={title}></img>
         <h3 className="movie__title">{title}</h3>
         <h5 className="movie_year">{year}</h5>
@@ -13,6 +14,7 @@ function Movie({id, year, title, summary, poster, genres}) {
 {genres.map((genre, index) => <li className="genres_genre" key={index}>{genre}</li>)}
         </ul>
     </div>
+    </Link>
 }
 
 Movie.propTypes = {
