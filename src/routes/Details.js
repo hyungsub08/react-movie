@@ -1,16 +1,22 @@
 import React from "react";
 
 class Detail extends React.Component {
-    componentDidMount(props) {
-        console.log(props);
-        // const { location } = this.props;
-        // // this.props에서 location prop을 받아온다는 의미?
-        // console.log(location.state);
+    componentDidMount() {
+        // console.log(this.props);
+        const { location, history } = this.props;
+        console.log(location);
+        if(location.state === undefined) {
+            history.push("/");
+        }
     }
-
-    render(props) {
-        return <span>Hello</span>;
-        console.log(props);
+    
+    render() {
+        const { location } = this.props;
+        if(location.state) {
+            return <span>{location.state.title}</span>;
+        } else {
+            return null;
+        }
     }
 }
 
